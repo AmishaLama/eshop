@@ -3,12 +3,12 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   firstName: String, // String is shorthand for {type: String}
+  lastName: String,
   phoneNumber: Number,
   email: String,
   password: String,
-  location: String,
+  address: String,
   age: Number,
- 
 });
 const users = mongoose.model('User', userSchema);
 
