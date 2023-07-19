@@ -1,34 +1,21 @@
 import React from 'react';
+import Login from './login';
+import Header from '../components/Header'
 
-function Home() {
+export default function index() {
   return (
-    <div className='body'> 
-    <img src='logo.jpg'/>
-    
-      <nav>
-      <img src='logo.jpg'/>
-        <ul>
-          <li>
-            <a href="#">HOME</a>
-          </li>
-          <li>
-            <a href="#">ABOUT</a>
-          </li>
-          <li>
-            <a href="#">SERVICES</a>
-          </li>
-          <li>
-            <a href="#">CONTACT</a>
-          </li>
-          <li>
-            <a href="#">FEEDBACK</a>
-          </li>
-        </ul>
-      </nav>
+    <>
+  <Header/>
+    <div className='body'>
       <section></section>
+        <div >
+        
+          <Login></Login>
+          
+        </div>
     </div>
-  );
+    </>
+   
+  )
 }
-
-
-export default Home;
+    
