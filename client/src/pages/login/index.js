@@ -18,7 +18,7 @@ const Login = () => (
   <>
   <Header/><section></section>
   <div className='login-box'>
-    <div className='login-form'>
+  
     <h1>LOGIN</h1>
     <Formik
       initialValues={{
@@ -50,19 +50,21 @@ const Login = () => (
               <div>{errors.password}</div>
             ) : null} <br/>
             </div>
-         <input type='checkbox'/>Remember Me
-         <p> <Link href="#">Forgot password?</Link></p>
+          <div className='remember-forgot'> 
+          <label><input type='checkbox'/>Remember Me</label>
+          <a><Link href="#">Forgot password?</Link></a>
+         </div>
           <br/>
-          <button type="submit">Login</button>
+          <button type="submit" className="btn">Login</button>
           <br />
-          {/* </div> */}
+          <div className='register-link'>
           <p>Don't have an account? <Link href="/register">Register Instead</Link></p>
-         
+         </div>
         </Form>
       )}
     </Formik>
    </div>
-  </div>
+ 
   </>
 );
 

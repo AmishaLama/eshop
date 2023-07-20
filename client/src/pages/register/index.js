@@ -6,11 +6,7 @@ import Link from 'next/link'
 
 const Register =()=>{
 const RegisterSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-  lastName: Yup.string()
+  fullName: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
@@ -26,7 +22,7 @@ const RegisterSchema = Yup.object().shape({
     password: Yup.string()
           .min(5, 'Password Too Short!')
           .required('Required'),
-    confirmpassword: Yup.string()
+    confirmPassword: Yup.string()
           .min(5, 'Password Too Short!')
           .required('Required')
           .oneOf([Yup.ref('password'), null], 'Passwords must match'),
@@ -51,19 +47,20 @@ const handleRegister=async(values)=>{
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(formFields)
     };
-    await fetch('http://localhost:4000/register',requestOptions)
+    fetch('http://localhost:4000/register',requestOptions)
+    .then(res=>res.json())
+    .then(data=> console.log(data))
+
 }
 
 return(
 <>
   <Header/><section></section>
 <div className='register-box'> 
-<div className="register-form">
-  <h2>Register</h2>
+  <h1>Register</h1>
   <Formik
    initialValues={{
-      firstName: '',
-      lastName: '',
+      fullName: '',
       email: '',
       address:'',
       phoneNumber: '',
@@ -73,24 +70,17 @@ return(
    validationSchema={RegisterSchema}
    onSubmit={values => {
     handleRegister(values)
-
+    console.log(values)
       }}
     >
       {({ errors, touched }) => (
         <Form>
           <div className="input-box">
           {/* <div className="credentials"> */}
-          <Field name="firstName" placeholder="FirstName" />
+          <Field name="fullName" placeholder="Full Name" />
           <br />
-          {errors.firstName && touched.firstName ? (
-            <div>{errors.firstName}</div>
-          ) : null}
-          </div>
-          
-          <div className="input-box">
-          <Field name="lastName" placeholder="LastName" /> <br />
-          {errors.lastName && touched.lastName ? (
-            <div>{errors.lastName}</div>
+          {errors.fullName && touched.fullName ? (
+            <div>{errors.fullName}</div>
           ) : null}
           </div>
 
@@ -98,45 +88,45 @@ return(
           <Field name="email" type="email" placeholder="Email" />
           <br />
           {errors.email && touched.email ? <div>{errors.email}</div> : null}
-          </div>
+        </div>
 
-          <div className="input-box">
+        <div className="input-box">
           <Field name="address" placeholder="Address" /> <br />
           {errors.address && touched.address ? (
             <div>{errors.address}</div>
           ) : null}
-          </div>
+        </div>
 
-          <div className="input-box">
+        <div className="input-box">
               <Field name="phoneNumber" type="text" placeholder="Phone Number"/><br/>
              {errors.phoneNumber && touched.phoneNumber ? <div>{errors.phoneNumber}</div> : null}
-             </div>
+        </div>
 
-             <div className="input-box">
+        <div className="input-box">
           <Field name="password" placeholder="Password" />
           <br />
           {errors.password && touched.password ? (
             <div>{errors.password}</div>
           ) : null}
-          </div>
-          <div className="input-box">
-          <Field name="confirmpass" placeholder="Confirm Password" /> <br />
-          {errors.confirmpass && touched.confirmpass ? (
-            <div>{errors.confirmpass}</div>
+        </div>
+
+        <div className="input-box">
+          <Field name="confirmPassword" placeholder="Confirm Password" /> <br />
+          {errors.confirmPassword && touched.confirmPassword ? (
+            <div>{errors.confirmPassword}</div>
           ) : null}
-          </div>
-          <br />
+        </div>
+          
           {/* </div>
           <div className="btn"> */}
-          <button type="submit">Register</button>
+          <button type="submit" className="btn">Register</button>
           <br />
-          {/* </div> */}
+          <div className="login-link">
           <p>Already have an account? <Link href ="/login">Login </Link></p>
-         
+         </div>
         </Form>
       )}
     </Formik>
-  </div>
   </div>
   </>
 );
