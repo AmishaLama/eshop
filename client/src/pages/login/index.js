@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link'
+import Header from '../../components/Header'
 
 const LoginSchema = Yup.object().shape({
   userName: Yup.string()
@@ -14,6 +15,8 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => (
+  <>
+  <Header/><section></section>
   <div className='login-box'>
     <div className='login-form'>
     <h1>LOGIN</h1>
@@ -30,8 +33,8 @@ const Login = () => (
       }}
     >
       {({ errors, touched }) => (
+
         <Form>
-       
             <div className='input-box'>
             <Field name="userName" placeholder="Username"/>
          
@@ -60,6 +63,7 @@ const Login = () => (
     </Formik>
    </div>
   </div>
+  </>
 );
 
 

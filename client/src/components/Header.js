@@ -8,7 +8,8 @@ export default function Header() {
       <nav>
       <div className="logo"><a href='/'><Image src={Logo} alt="Picture of the author"/></a></div>
         <ul>
-          <li><a href="/home">HOME</a></li>
+          <li><a href="/login">LOGIN</a></li>
+          <li><a href="/register">SIGNUP</a></li>
           <li><a href="/about">ABOUT</a></li>
           <li><a href="/services">SERVICES</a></li>
           <li><a href="/contact">CONTACT</a></li>
