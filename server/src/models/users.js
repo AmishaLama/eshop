@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  firstName: String, // String is shorthand for {type: String}
-  lastName: String,
-  phoneNumber: Number,
+  fullName: String, // String is shorthand for {type: String}
   email: String,
-  password: String,
   address: String,
-  age: Number,
+  phoneNumber: Number,
+  password: String,
+  confirmPassword: String,
+ 
 });
 const users = mongoose.model('User', userSchema);
 

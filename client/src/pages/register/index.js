@@ -15,18 +15,19 @@ const RegisterSchema = Yup.object().shape({
     .min(5, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-    phoneNumber: Yup.string()
+  phoneNumber: Yup.string()
           .min(2, 'Too Short!')
           .max(10, 'Too Long!')
           .required('Required'),
-    password: Yup.string()
-          .min(5, 'Password Too Short!')
+  password: Yup.string()
+          .min(8, "Password must have atleast 8 characters")
+          .max(14, "Password must not exceed 14 characters")
           .required('Required'),
-    confirmPassword: Yup.string()
-          .min(5, 'Password Too Short!')
-          .required('Required')
+  confirmPassword: Yup.string()
+          .min(8, 'Password Too Short!')
+          .required('Please re-type your password')
           .oneOf([Yup.ref('password'), null], 'Passwords must match'),
-          email: Yup.string().email('Invalid email').required('Required'),
+      
 
 //   password: Yup.string()
 //     .min(8, "Password must have atleast 8 characters")
@@ -65,7 +66,7 @@ return(
       address:'',
       phoneNumber: '',
       password:'',
-      confirmpassword:''
+      confirmPassword:''
    }}
    validationSchema={RegisterSchema}
    onSubmit={values => {
@@ -76,7 +77,6 @@ return(
       {({ errors, touched }) => (
         <Form>
           <div className="input-box">
-          {/* <div className="credentials"> */}
           <Field name="fullName" placeholder="Full Name" />
           <br />
           {errors.fullName && touched.fullName ? (
