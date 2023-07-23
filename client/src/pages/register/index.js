@@ -58,7 +58,7 @@ const Register = () => {
     const data = await res.json();
     if (data) {
       msg.info(data.msg);
-      router.push('/');
+      router.push('/'); //navigates register page to homepage
     }
   };
 
