@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import Link from 'next/link'
 import Header from '../../components/Header'
 
+const Login = () => {
 const LoginSchema = Yup.object().shape({
   userName: Yup.string()
     .min(2, 'Too Short!')
@@ -14,11 +15,10 @@ const LoginSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const Login = () => (
+return(
   <>
   <Header/><section></section>
   <div className='login-box'>
-  
     <h1>LOGIN</h1>
     <Formik
       initialValues={{
@@ -33,40 +33,36 @@ const Login = () => (
       }}
     >
       {({ errors, touched }) => (
-
         <Form>
-            <div className='input-box'>
-            <Field name="userName" placeholder="Username"/>
-         
-            {errors.userName && touched.userName ? (
-              <div>{errors.userName}</div>
-            ) : null} <br/>
-            </div>
-          {/* <Field name="email" type="email" placeholder="email"/>
-          {errors.email && touched.email ? <div>{errors.email}</div> : null} */}
           <div className='input-box'>
-            <Field name="password" placeholder="Password"/>
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null} <br/>
-            </div>
+            <Field name="userName" placeholder="Username"/>
+            {errors.userName && touched.userName ? <div>{errors.userName}</div> : null} <br/>
+          </div>
+
+          <div className='input-box'>
+            <Field name="password" placeholder="Password"/> 
+            {errors.password && touched.password ? <div>{errors.password}</div> : null} <br/>
+          </div>
+
           <div className='remember-forgot'> 
-          <label><input type='checkbox'/>Remember Me</label>
-          <a><Link href="#">Forgot password?</Link></a>
-         </div>
-          <br/>
-          <button type="submit" className="btn">Login</button>
-          <br />
-          <div className='register-link'>
-          <p>Don't have an account? <Link href="/register">Register Instead</Link></p>
-         </div>
+            <label><input type='checkbox'/>Remember Me</label>
+            <a><Link href="#">Forgot password?</Link></a>
+          </div><br/>
+
+          <button type="submit" className="btn">Login</button> <br />
+          
+          {/* <div className='register-link'>
+            <p>Don't have an account? <Link href="/register">Register Instead</Link></p>
+         </div> */}
         </Form>
       )}
     </Formik>
+        <div className='register-link'>
+          <p>Don't have an account? <Link href="/register">Register Instead</Link></p>
+        </div>
    </div>
- 
   </>
-);
+)}
 
 
 export default Login;
