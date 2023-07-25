@@ -23,7 +23,6 @@ return(
     <Formik
       initialValues={{
         userName: '',
-        email: '',
         password: '',
       }}
       validationSchema={LoginSchema}
@@ -46,19 +45,16 @@ return(
 
           <div className='remember-forgot'> 
             <label><input type='checkbox'/>Remember Me</label>
-            <a><Link href="#">Forgot password?</Link></a>
+            <Link href="#">Forgot password?</Link>
           </div><br/>
 
           <button type="submit" className="btn">Login</button> <br />
           
-          {/* <div className='register-link'>
-            <p>Don't have an account? <Link href="/register">Register Instead</Link></p>
-         </div> */}
         </Form>
       )}
     </Formik>
         <div className='register-link'>
-          <p>Don't have an account? <Link href="/register">Register Instead</Link></p>
+          Don't have an account? <Link href="/register">Register Instead</Link>
         </div>
    </div>
   </>

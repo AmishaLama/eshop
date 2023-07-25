@@ -56,9 +56,13 @@ const Register = () => {
     // .then(data=> console.log(data))
     const res = await fetch('http://localhost:4000/register', requestOptions);
     const data = await res.json();
-    if (data) {
-      msg.info(data.msg);
-      router.push('/'); //navigates register page to homepage
+    if (data && res.status==200) {
+      router.push('/') //navigates register page to homepage
+      setTimeout(() => {
+        msg.info(data.msg);
+      }, 2000);
+    } else{
+        msg.info(data.msg);
     }
   };
 
@@ -143,11 +147,7 @@ const Register = () => {
                 Register
               </button>
               <br />
-              <div className="login-link">
-                <p>
-                  Already have an account? <Link href="/login">Login </Link>
-                </p>
-              </div>
+              <div className="login-link">Already have an account? <Link href="/login">Login </Link></div>
             </Form>
           )}
         </Formik>

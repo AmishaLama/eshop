@@ -10,6 +10,6 @@ const userSchema = new Schema({
   confirmPassword: String,
  
 });
-const users = mongoose.model('User', userSchema);
+const users = mongoose.model('Users', userSchema);
 
 module.exports = users;
