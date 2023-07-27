@@ -57,7 +57,7 @@ const Register = () => {
     const res = await fetch('http://localhost:4000/register', requestOptions);
     const data = await res.json();
     if (data && res.status==200) {
-      router.push('/') //navigates register page to homepage
+      // router.push('/') //navigates register page to homepage
       setTimeout(() => {
         msg.info(data.msg);
       }, 2000);

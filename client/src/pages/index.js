@@ -7,12 +7,7 @@ export default function index() {
     <>
   <Header/>
     <div className='body'>
-     
-        <div >
-        
-          {/* <Login></Login> */}
-          
-        </div>
+
     </div>
     </>
    

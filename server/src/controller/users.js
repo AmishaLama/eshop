@@ -1,6 +1,8 @@
 const Users = require('../models/users')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const jwt = require('jsonwebtoken');
+
 
 // const checkIfUserExists= async (req, res) => {
 //     const data= await Users.findOne({phoneNumber:req.params.phoneNumber})
@@ -29,10 +31,13 @@ const registerUser=async(req, res) => {
     }
     else{
     req.body.password =await bcrypt.hash(req.body.password, saltRounds); //creates hashed password
+    const token = jwt.sign({ phoneNumber:req.body.phoneNumber}, process.env.SECRET_KEY); //creates jwt for users
+
     await Users.create(req.body)
     res.json({
       msg: "Successfully Registered!",
-      success: true
+      success: true,
+      token
     })
   }}
   catch(err){
