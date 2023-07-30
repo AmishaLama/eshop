@@ -3,49 +3,37 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 
-
-// const checkIfUserExists= async (req, res) => {
-//     const data= await Users.findOne({phoneNumber:req.params.phoneNumber})
-//     if(data){
-//       res.json({
-//         msg:"Phone Number already exists",
-//         validPhoneNo: false
-//       })
-//     }
-//     else{
-//       res.json({
-//         validPhoneNo:true,
-//         msg:"Valid Phone Number"
-//       })
-//     }
-//   }
-  
-const registerUser=async(req, res) => {
+const registerUser=  async(req, res) => {
   try{
-    const data= await Users.findOne({phoneNumber:req.body.phoneNumber}) //check if phoneNumber already exists
-    if(data){
-      res.status(409).json({
-        msg:"Phone Number already exists",
-        success: false
-      })
-    }
-    else{
-    req.body.password =await bcrypt.hash(req.body.password, saltRounds); //creates hashed password
-    const token = jwt.sign({ phoneNumber:req.body.phoneNumber}, process.env.SECRET_KEY); //creates jwt for users
-
-    await Users.create(req.body)
-    res.json({
-      msg: "Successfully Registered!",
-      success: true,
-      token
-    })
-  }}
-  catch(err){
-    console.log(err)
+      // step 1: check if user/phoneNumber already exists
+      const data= await Users.findOne({phoneNumber:req.body.phoneNumber })
+      if(data){
+          res.status(409).json({
+              msg: "Phone Number already exists",
+              success: false
+          })
+      }else{
+              //step 2: create a hash password of req.body.password
+              req.body.password = await bcrypt.hash(req.body.password, saltRounds)
+              //step 3: create a jwt token for the user
+              const token = jwt.sign({ phoneNumber:req.body.phoneNumber}, process.env.SECRET_KEY);
+              const data = await Users.create(req.body)
+              if(data){
+                  const {password, ...otherFields} = data._doc
+                  res.json({
+                      msg: "you are successfully registered",
+                      success: true,
+                      token,
+                      userDetails: otherFields
+                  })
+              }
+             
+      }
+    
+  }catch(err){
+      console.log(err)
   }
-  }
 
-  module.exports={registerUser}
+}
 
-  
-  
+module.exports = {registerUser}

@@ -5,9 +5,12 @@ import * as Yup from 'yup';
 import Link from 'next/link';
 import { Button, message } from 'antd';
 import { useRouter } from 'next/navigation';
+import { setUserDetails } from '@/redux/reducerSlice/users';
+import { useDispatch } from 'react-redux';
 
 const Register = () => {
   const router = useRouter();
+  const dispatch= useDispatch()
   const [msg, contextHolder] = message.useMessage();
   const RegisterSchema = Yup.object().shape({
     fullName: Yup.string()
@@ -57,7 +60,10 @@ const Register = () => {
     const res = await fetch('http://localhost:4000/register', requestOptions);
     const data = await res.json();
     if (data && res.status==200) {
-      // router.push('/') //navigates register page to homepage
+      alert(JSON.stringify(data))
+      debugger;
+      dispatch(setUserDetails(data))
+      router.push('/') //navigates register page to homepage
       setTimeout(() => {
         msg.info(data.msg);
       }, 2000);
