@@ -60,7 +60,7 @@ const Register = () => {
     const res = await fetch('http://localhost:4000/register', requestOptions);
     const data = await res.json();
     if (data && res.status==200) {
-      alert(JSON.stringify(data))
+      // alert(JSON.stringify(data))
       debugger;
       dispatch(setUserDetails(data))
       router.push('/') //navigates register page to homepage
@@ -132,7 +132,7 @@ const Register = () => {
               </div>
 
               <div className="input-box">
-                <Field name="password" placeholder="Password" />
+                <Field name="password" type= "password" placeholder="Password" />
                 <br />
                 {errors.password && touched.password ? (
                   <div>{errors.password}</div>
@@ -140,7 +140,7 @@ const Register = () => {
               </div>
 
               <div className="input-box">
-                <Field name="confirmPassword" placeholder="Confirm Password" />{' '}
+                <Field name="confirmPassword" type= "password" placeholder="Confirm Password" />{' '}
                 <br />
                 {errors.confirmPassword && touched.confirmPassword ? (
                   <div>{errors.confirmPassword}</div>

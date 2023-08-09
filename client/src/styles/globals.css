@@ -214,3 +214,15 @@ section {
 }
 /* registerpage css ended */
 
+/* SearchBar css */
+.searchb{
+  position: absolute;
+  left: 50%;
+  width: 30%;
+  padding: 12px 26px;
+  margin-top: 12px; 
+  background-color: #BFBFFF;
+  border-radius: 10px;
+
+}
+
