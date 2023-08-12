@@ -3,23 +3,58 @@
   import logger from 'redux-logger'
   import users from '../reducerSlice/users'
   import { persistReducer, persistStore } from 'redux-persist';
-  import storage from 'redux-persist/lib/storage';
+ 
+// <------- TEST CODE HERE ------------->
 
-  const persistConfig = {
-    key: 'root',
-    storage,
-  }
-  //setting up my combinereducer
-  const reducer = combineReducers({
-      users,
-  })
+const createNoopStorage = () => {
+  return {
+    getItem(_key) {
+      return Promise.resolve(null);
+    },
+    setItem(_key, value) {
+      return Promise.resolve(value);
+    },
+    removeItem(_key) {
+      return Promise.resolve();
+    },
+  };
+};
 
-  const persistedReducer = persistReducer(persistConfig, reducer)
 
-  export const store = configureStore({
-      reducer:persistedReducer,
-      devTools: true,
-      middleware:[logger]
-  })
-  
-  export const persistor = persistStore(store)
+const storage =
+  typeof window === "undefined" ? createNoopStorage() : require("redux-persist/lib/storage").default;
+
+export default storage;
+
+// <--------- TEST CODE END HERE ------------->
+
+
+
+
+// Persist config
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+
+// Combining store
+const reducer = combineReducers({
+  users,
+});
+
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+
+//* NEW CODE HERE
+export const store = configureStore({
+  reducer: persistedReducer,
+  devTools: true,
+  middleware: [logger]
+})
+
+
+
+export const persistor = persistStore(store)
+// export default store;

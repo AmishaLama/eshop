@@ -223,6 +223,67 @@ section {
   margin-top: 12px; 
   background-color: #BFBFFF;
   border-radius: 10px;
+}
 
+/* PopOver css */
+.pop{
+  font-size: medium ;
+  width: 160px;
+  height: 32px;
+  text-align: center;
+  margin-bottom: 9px;
+  background: black;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  
+}
+.pop:hover {
+  border-radius: 10px;
+  width: 160px;
+  cursor: pointer;
+  text-align: center;
+  -webkit-text-fill-color:white;
+  -webkit-background-clip: border-box;
+ 
+}
+
+.add-product{
+  text-align: center;
+  margin-top: 5rem;
+  margin-left: 1rem;
+  font-size: 35px;
+  color: #333391;
+}
+
+.add-product .form {
+  width: 33%;
+  height: 50px;
+  margin: 20px 420px ;
+  }
+
+.form input{
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  font-size: 16px;
+  border-color: #333391;
+  color: #5f5fd0;
+  padding: 2px 0px 2px 20px;
+}
+
+.form input::placeholder{
+  color: #8787d3 ;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; 
+}
+ 
+.btn {
+  background-color: #333391;
+  border-radius: 25px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 

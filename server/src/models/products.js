@@ -9,6 +9,6 @@ const productSchema = new Schema({
   category: String,
   flag: { type: String, default: 'valid' },
 });
-const Products = mongoose.model('Product', productSchema);
+const Products = mongoose.model('Products', productSchema);
 
 module.exports = Products;

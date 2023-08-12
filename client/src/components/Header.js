@@ -14,11 +14,18 @@ export default function Header() {
   }
   const {isLoggedIn, userDetails} = useSelector(state=>state.users)
   const content = (
-    <div>
-
-      <Link href="/profile">Profile</Link>
-      <p onClick={handleLogout}>Logout</p>
+    <>
+    <div className='pop'>
+      <Link href="/dashboard">Dashboard</Link>
     </div>
+    <div className='pop'>
+      <Link href="/profile">Account Details</Link>
+    </div>
+
+    <div className='pop'>
+      <p onClick={handleLogout}>Sign Out</p>
+    </div>
+    </>
   );
   return (
     <div className="body">
@@ -27,7 +34,7 @@ export default function Header() {
         {isLoggedIn ? (
           <div>
             <Searchbar/>
-           <Popover placement="bottom" title={userDetails.fullName} content={content} trigger="click">
+           <Popover placement="bottom" title ={userDetails.fullName} content={content} trigger="hover">
           <Avatar
             size="large"
             style={{
