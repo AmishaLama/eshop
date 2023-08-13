@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import { useState, useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { addToCart } from '@/redux/reducerSlice/products';
-// import Image from 'next/image'
+import Image from 'next/image'
 import {ShoppingCartOutlined} from '@ant-design/icons';
 
 
@@ -28,18 +28,17 @@ export default function index() {
       {
         products.length>0 ? (
           <div>
-      
+            <h1>OUR PRODUCTS</h1>
             {products.map((item)=>{
               return <div className='card'>
-              {item.productImage}
-              {/* <Image src={'http://localhost:4000/product-img/'+ item._id} alt="picture" width={50} height={60}/> */}
+              <Image src={'http://localhost:4000/product-img/'+ item._id} alt="picture" width={230} height={280}/><br/>
+             <div className='product-details'>
               Name:{item.productName}<br/>
               Price:{item.productPrice}<br/>
-              Category:{item.category}<br/>
-              Description:{item.productDescription}<br/>
-
+              {/* Category:{item.category}<br/>
+              Description:{item.productDescription}<br/> */}
               <ShoppingCartOutlined className='badge'onClick={()=>dispatch(addToCart(item._id))} />
-
+              </div>
               </div>
               
             })}

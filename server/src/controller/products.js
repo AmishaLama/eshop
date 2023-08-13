@@ -1,6 +1,8 @@
+const fs = require('fs');
+const path = require('path');
 const Products= require('../models/products')
 const addNewProducts = async(req,res)=>{
-  console.log(req.body)
+  req.body.productImage = req.file.filename
     await Products.create(req.body)
       res.json({
         msg: 'success'
@@ -14,6 +16,17 @@ const getAllProducts = async(req,res)=>{
       msg: 'success'
     })
    }  
+  }
+  const getProductImageById = async(req,res)=> {
+    const data =  await Products.findById(req.params.id)
+    const imageDir = path.join(__dirname,'../../','uploads/'+data.productImage) 
+    const defaultDir = path.join(__dirname,'../../','uploads/1523905fanta.jpeg') 
+
+    if(fs.existsSync( imageDir )){
+        res.sendFile(imageDir)
+    }else{
+        res.sendFile(defaultDir)
+    }
 
   }
-  module.exports = {addNewProducts,getAllProducts}
+  module.exports = {addNewProducts,getAllProducts,getProductImageById}

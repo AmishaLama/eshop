@@ -12,12 +12,18 @@ import Header from '@/components/Header';
 
 const {Sider, Content } = Layout;
 const Admin = () => {
+  const [file, setFile] = useState(null)
     const handleAddProducts = (values) => {
+      const data = new FormData()
+      Object.entries(values).forEach((item)=>{
+          data.append(item[0], item[1])
+          })
+          data.append('products',file)
+          
         fetch('http://localhost:4000/products',
             {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(values)
+                body:data
             })
 
     }
@@ -101,8 +107,13 @@ const Admin = () => {
                                 <div className='form'>
                                     <Field type="textarea" placeholder="Product Description" name="productDescription" />
                                     {errors.productDescription && touched.productDescription ? <div>{errors.productDescription}</div> : null}<br />
-                                    <button type="submit" className='btn'>Submit</button>
+                               </div>
+                                <div className='form'>
+                                  <input type='file' onChange={(e)=> setFile(e.target.files[0])}/>
                                 </div>
+                                    <button type="submit" className='btn'>Submit</button>
+                              
+
                             </Form>
                         )}
                     </Formik>
