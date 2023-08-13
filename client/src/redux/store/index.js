@@ -2,6 +2,7 @@
   import { combineReducers } from 'redux';
   import logger from 'redux-logger'
   import users from '../reducerSlice/users'
+  import products from '../reducerSlice/products'
   import { persistReducer, persistStore } from 'redux-persist';
  
 // <------- TEST CODE HERE ------------->
@@ -41,6 +42,8 @@ const persistConfig = {
 // Combining store
 const reducer = combineReducers({
   users,
+  products
+  //..
 });
 
 

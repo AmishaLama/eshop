@@ -6,8 +6,11 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Searchbar from '../components/Searchbar'
+import { ClockCircleOutlined,ShoppingCartOutlined} from '@ant-design/icons';
+import {Badge, Space } from 'antd';
 
 export default function Header() {
+  const {cartList}= useSelector(state=>state.products)
   const router =useRouter()
   const handleLogout =()=>{
     router.push('/profile')
@@ -38,16 +41,17 @@ export default function Header() {
           <Avatar
             size="large"
             style={{
-            backgroundColor: '#fde3cf',
-            color: '#f56a00',
-            marginTop:'17px',
-            fontSize: '1.5rem',
-            marginRight: '200px',
-            left: '99%' }}
+            backgroundColor: '#BFBFFF',
+            color: '#5353e0',
+            fontSize: '1.5rem',  
+            left: '98%' }}
           >
           {userDetails.fullName[0]}
           </Avatar>
           </Popover>
+          <Badge count={cartList.length} className='badge'>
+          <ShoppingCartOutlined />
+            </Badge>
           </div>
          
         ): 

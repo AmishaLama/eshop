@@ -302,3 +302,10 @@ section {
   width: 250px;
   display: inline-flex;
 }
+.badge{
+  left: 90%;
+  top: 10px;
+  margin-top: 12px;
+  color: #BFBFFF;
+  font-size: 35px;
+}
