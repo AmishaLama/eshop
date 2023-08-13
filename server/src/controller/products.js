@@ -1,4 +1,4 @@
-const Products=require('../models/products')
+const Products= require('../models/products')
 const addNewProducts = async(req,res)=>{
   console.log(req.body)
     await Products.create(req.body)

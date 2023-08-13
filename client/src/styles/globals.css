@@ -247,6 +247,7 @@ section {
  
 }
 
+/* Admin page css */
 .add-product{
   text-align: center;
   margin-top: 5rem;
@@ -287,3 +288,17 @@ section {
   font-size: 16px;
 }
 
+.sidebar{
+  margin-top: 7rem;
+  background-color: black;
+}
+
+/* Productpage css */
+.card{
+  background-color: aqua;
+  margin-top: 7rem;
+  margin-left: 15px;
+  height: 350px;
+  width: 250px;
+  display: inline-flex;
+}
