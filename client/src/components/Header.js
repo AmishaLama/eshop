@@ -1,62 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../../public/images/logo2.png'
 import Image from 'next/image'
-import { Avatar, Popover  } from 'antd';
-import { useSelector } from 'react-redux';
+import { Avatar, Popover, Badge  } from 'antd';
+import {ShoppingCartOutlined} from '@ant-design/icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleLogout } from '@/redux/reducerSlice/users';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Searchbar from '../components/Searchbar'
-import { ClockCircleOutlined,ShoppingCartOutlined} from '@ant-design/icons';
-import {Badge, Space } from 'antd';
 
 export default function Header() {
-  const {cartList}= useSelector(state=>state.products)
   const router =useRouter()
-  const handleLogout =()=>{
-    router.push('/profile')
-  }
-  const {isLoggedIn, userDetails} = useSelector(state=>state.users)
+  const dispatch = useDispatch()
+  const handleUserLogout =()=>{
+    dispatch(handleLogout())
+    }
+  const isLoginPage = router.pathname === '/login';
+  const isRegisterPage = router.pathname === '/register';
+  const {cartList}= useSelector(state=>state.products)
+
+  const {isLoggedIn,userDetails} = useSelector(state=>state.users)
   const content = (
     <>
     <div className='pop'>
-      <Link href="/dashboard">Dashboard</Link>
-    </div>
-    <div className='pop'>
       <Link href="/profile">Account Details</Link>
     </div>
-
     <div className='pop'>
-      <p onClick={handleLogout}>Sign Out</p>
+      <Link href="/profile">My Orders</Link>
+    </div>
+    <div className='pop'>
+      <p onClick={handleUserLogout}>Logout</p>
     </div>
     </>
   );
   return (
     <div className="body">
-      <nav>
+      <nav className={`navbar ${isLoginPage ? 'login-navbar' : ''} ${isRegisterPage ? 'register-navbar' : ''}`}>
       <div className="logo"><Link href='/'><Image src={Logo} alt="Picture of the author"/></Link></div>
+      <Searchbar/>
         {isLoggedIn ? (
           <div>
-            <Searchbar/>
-           <Popover placement="bottom" title ={userDetails.fullName} content={content} trigger="hover">
+            <ul>
+              <li><Link href="/about">ABOUT</Link></li>
+              <li><Link href="/contact">CONTACTUS</Link></li>
+
+            </ul>
+            <Link href="/cart">
+              <Badge  className='badge'>
+                <ShoppingCartOutlined/>
+              </Badge>
+            </Link>
+           
+           <Popover placement="bottom" title ={userDetails.fullName} content={content} trigger="click">
           <Avatar
             size="large"
             style={{
-            backgroundColor: '#BFBFFF',
+            backgroundColor: 'lavender',
             color: '#5353e0',
             fontSize: '1.5rem',  
-            left: '98%' }}
+            left: '98%',
+            cursor:'pointer',
+            fontWeight:'600' }}
           >
           {userDetails.fullName[0]}
           </Avatar>
           </Popover>
-          <Badge count={cartList.length} className='badge'>
-          <ShoppingCartOutlined />
-            </Badge>
           </div>
          
         ): 
         <ul>
-          <Searchbar/>
+          
           <li><Link href="/login">LOGIN</Link></li>
           <li><Link href="/register">SIGNUP</Link></li>
           {/* <li><Link href="/about">ABOUT</Link></li> */}

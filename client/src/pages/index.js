@@ -24,23 +24,26 @@ export default function index() {
   return (
     <>
   <Header/>
+  <h1>OUR PRODUCTS</h1>
   <div>
       {
         products.length>0 ? (
-          <div>
-            <h1>OUR PRODUCTS</h1>
+          <div className='product-container'>
+            
             {products.map((item)=>{
               return <div className='card'>
-              <Image src={'http://localhost:4000/product-img/'+ item._id} alt="picture" width={230} height={280}/><br/>
-             <div className='product-details'>
-              Name:{item.productName}<br/>
-              Price:{item.productPrice}<br/>
-              {/* Category:{item.category}<br/>
-              Description:{item.productDescription}<br/> */}
-              <ShoppingCartOutlined className='badge'onClick={()=>dispatch(addToCart(item._id))} />
+              <Image src={'http://localhost:4000/product-img/'+ item._id} alt="picture" width={230} height={230}/><br/>
+             <div className='product-name'>
+              {item.productName}
               </div>
+              <div className='price'>
+              {item.productPrice}
               </div>
-              
+              <br/>
+              <button className='cart'onClick={()=>dispatch(addToCart(item._id))} trigger="click">
+                ADD TO CART
+              </button>
+              </div>  
             })}
             </div>
         ): "loading"

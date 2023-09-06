@@ -18,7 +18,7 @@ const Login = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
     };
-    const res = await fetch('http://localhost:4000/login', requestOptions)
+    const res = await fetch('http://localhost:5000/login', requestOptions)
     const data = await res.json()
     if (data && res.status == 200&& data.success) {
 
@@ -44,27 +44,26 @@ const Login = () => {
 return(
   <>
   {contextHolder}
-  <Header/><section></section>
+  
+  {/* <Header className='navbar login'/> */}
+  <section></section>
   <div className='login-box'>
     <h1>LOGIN</h1>
     <Formik
       initialValues={{
-        userName: '',
+        phoneNumber: '',
         password: '',
       }}
       validationSchema={LoginSchema}
-      onSubmit={(values) => {
-        // same shape as initial values
+      onSubmit={values => {
         handleLogin(values);
-
-        console.log(values);
       }}
     >
       {({ errors, touched }) => (
         <Form>
           <div className='input-box'>
-            <Field name="userName" placeholder="Username"/>
-            {errors.userName && touched.userName ? <div>{errors.userName}</div> : null} <br/>
+            <Field name="phoneNumber" placeholder="Phone Number"/>
+            {errors.phoneNumber && touched.phoneNumber ? <div>{errors.phoneNumber}</div> : null} <br/>
           </div>
 
           <div className='input-box'>

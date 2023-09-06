@@ -54,9 +54,7 @@ const Register = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formFields),
     };
-    // fetch('http://localhost:4000/register',requestOptions)
-    // .then(res=>res.json())
-    // .then(data=> console.log(data))
+
     const res = await fetch('http://localhost:4000/register', requestOptions);
     const data = await res.json();
     if (data && res.status==200) {
@@ -75,7 +73,8 @@ const Register = () => {
   return (
     <>
       {contextHolder}
-      <Header />
+      <Header style={{
+            backgroundColor: 'black'}} />
       <section></section>
       <div className="register-box">
         <h1>Register</h1>

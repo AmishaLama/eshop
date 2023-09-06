@@ -16,7 +16,6 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUserDetails(state, actions){
-      debugger;
       const {token, userDetails}= actions.payload
       return{
         ...state,
@@ -25,8 +24,12 @@ const userSlice = createSlice({
         isLoggedIn: true
       }
     },
-  }
+    handleLogout(state, actions) {
+      state= initialState
+      return state
+    },
+  },
 });
 
-export const {setUserDetails} = userSlice.actions;
+export const {setUserDetails,handleLogout} = userSlice.actions;
 export default userSlice.reducer;
