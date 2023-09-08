@@ -34,13 +34,13 @@ export default function index() {
               return <div className='card'>
               <Image src={'http://localhost:4000/product-img/'+ item._id} alt="picture" width={230} height={230}/><br/>
              <div className='product-name'>
-              {item.productName}
+                {item.productName}
               </div>
               <div className='price'>
-              {item.productPrice}
+                Rs. {item.productPrice}
               </div>
               <br/>
-              <button className='cart'onClick={()=>dispatch(addToCart(item._id))} trigger="click">
+              <button className='cart'onClick={()=>dispatch(addToCart(item))} trigger="click">
                 ADD TO CART
               </button>
               </div>  

@@ -18,8 +18,9 @@ export default function Header() {
   const isLoginPage = router.pathname === '/login';
   const isRegisterPage = router.pathname === '/register';
   const {cartList}= useSelector(state=>state.products)
-
   const {isLoggedIn,userDetails} = useSelector(state=>state.users)
+  const totalQuantity = cartList.reduce((total, item) => total + item.quantity, 0);
+
   const content = (
     <>
     <div className='pop'>
@@ -46,7 +47,7 @@ export default function Header() {
 
             </ul>
             <Link href="/cart">
-              <Badge  className='badge'>
+              <Badge count={totalQuantity} className='badge'>
                 <ShoppingCartOutlined/>
               </Badge>
             </Link>

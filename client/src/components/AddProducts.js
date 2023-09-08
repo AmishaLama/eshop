@@ -40,7 +40,17 @@ return (
                     ) : null}<br />
                 </div>
                 <div className='form'>
-                    <Field placeholder="Product Category" name="category" />
+                    <Field className='category 'component ='select' placeholder="Product Category" name="category" >
+                        <option value="">Please Select the category</option>
+                        <option value="soft">Carbonated Soft Drinks</option>
+                        <option value="juice">Juice Drinks</option>
+                        <option value="milk">Flavoured Milk</option>
+                        <option value="energy">Energy Drinks</option>
+                        <option value="whisky">Whisky</option>
+                        <option value="rum">Rum</option>
+                        <option value="wine">Wine</option>
+                        <option value="beer">Beer</option>
+                    </Field>                   
                     {errors.category && touched.category ? (
                         <div>{errors.category}</div>
                     ) : null}<br />
