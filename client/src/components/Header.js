@@ -30,7 +30,7 @@ export default function Header() {
       <Link href="/profile">My Orders</Link>
     </div>
     <div className='pop'>
-      <p onClick={handleUserLogout}>Logout</p>
+      <Link href='/' onClick={handleUserLogout}>Logout</Link>
     </div>
     </>
   );
@@ -42,15 +42,16 @@ export default function Header() {
         {isLoggedIn ? (
           <div>
             <ul>
+              <li><Link href="/">HOME</Link></li>
               <li><Link href="/about">ABOUT</Link></li>
               <li><Link href="/contact">CONTACTUS</Link></li>
-
-            </ul>
             <Link href="/cart">
               <Badge count={totalQuantity} className='badge'>
                 <ShoppingCartOutlined/>
               </Badge>
             </Link>
+            </ul>
+
            
            <Popover placement="bottom" title ={userDetails.fullName} content={content} trigger="click">
           <Avatar
@@ -60,6 +61,7 @@ export default function Header() {
             color: '#5353e0',
             fontSize: '1.5rem',  
             left: '98%',
+            top: '20px',
             cursor:'pointer',
             fontWeight:'600' }}
           >
@@ -70,14 +72,14 @@ export default function Header() {
          
         ): 
         <ul>
-          
           <li><Link href="/login">LOGIN</Link></li>
           <li><Link href="/register">SIGNUP</Link></li>
-          {/* <li><Link href="/about">ABOUT</Link></li> */}
-          {/* <li><Link href="/services">SERVICES</Link></li>
-          <li><Link href="/contact">CONTACT</Link></li>
-          <li><Link href="/feedback">FEEDBACK</Link></li> */}
-         
+          <li><Link href="/contact">CONTACT US</Link></li>
+          <Link href="/cart">
+            <Badge count={totalQuantity} className='badge'>
+                <ShoppingCartOutlined/>
+            </Badge>
+         </Link>        
         </ul>
 }
       </nav>

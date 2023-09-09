@@ -149,10 +149,10 @@ const Register = () => {
               {/* </div>
           <div className="btn"> */}
               <button type="submit" className="btn">
-                Register
+                Sign Up
               </button>
               <br />
-              <div className="login-link">Already have an account? <Link href="/login">Login </Link></div>
+              <div className="login-link">Already have an account? <Link href="/login">Login Instead </Link></div>
             </Form>
           )}
         </Formik>

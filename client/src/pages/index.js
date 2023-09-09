@@ -4,13 +4,11 @@ import { useState, useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { addToCart } from '@/redux/reducerSlice/products';
 import Image from 'next/image'
-import {ShoppingCartOutlined} from '@ant-design/icons';
 
 
 export default function index() {
   // const {fullName}= useSelector(state=>state.users) checking if redux is being used or not
   const {cartList}= useSelector(state=>state.products)
-
   const dispatch= useDispatch()
   const [products,setProducts]= useState([])
   const fetchProducts= async()=> {

@@ -9,6 +9,8 @@ import {useDispatch, useSelector, useState, useEffect } from 'react-redux'
 const Cart =()=> {
   const {cartList} = useSelector(state => state.products)
   const dispatch=useDispatch()
+  const {isLoggedIn,userDetails} = useSelector(state=>state.users)
+
 
   return (
     <>
@@ -67,10 +69,16 @@ const Cart =()=> {
                 <p className='amount'>Rs.  {cartList.reduce((total, cartItem) => total + cartItem.quantity * cartItem.productPrice, 0)}</p>
               </div>
               <p>Shipping Charge is calculated at checkout.</p>
-              <Link href ="/checkout">          
-                <button>Check out <CarryOutOutlined /></button>
-              </Link>
-
+              
+              {isLoggedIn?(
+                <Link href ="/checkout">          
+                  <button>Check out <CarryOutOutlined /></button>
+                </Link>
+              ):(
+                <Link href ="/login">          
+                  <button>Check out <CarryOutOutlined /></button>
+                </Link>
+              )}
 
             </div>
           </div>

@@ -52,11 +52,17 @@ nav ul li a {
   background: rgba(119, 119, 239, 0.7);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-  padding:12px 30px;
+  padding:12px 25px;
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.abc{
+  padding:2px 50px 2px 25px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 nav ul li a:hover {
@@ -86,20 +92,20 @@ section {
 
 /* loginform css */
 .login-box{
-  width: 400px;
-  height: 450px;
+  width: 500px;
+  height: 500px;
   background: linear-gradient(to top,rgba(0,0,0,0.8)10%,rgba(0,0,0,0.8)10%);
   backdrop-filter: blur(5px);
   position: absolute;
-  top: 150px;
-  left: 540px;
-  transform: translate(0%,-5%);
+  top: 250px;
+  left: 650px;
   border-radius: 25px;
   border-color: #BFBFFF;
   padding: 30px 40px;
 }
 
 .login-box h1{
+  margin-top: 60px;
   font-size: 36px;
   font-family: sans-serif ;
   justify-content: center;
@@ -115,6 +121,7 @@ section {
 
 .login-box .remember-forgot{
   display:flex;
+  font-size: 20px;
   justify-content: space-between;
   background: linear-gradient(
     to right,#BFBFFF,#5353e0, #117df0
@@ -138,11 +145,12 @@ section {
   height: 100%;
   background: transparent;
   border-radius: 40px;
-  font-size: 16px;
+  font-size: 18px;
   padding: 2px 0px 2px 20px;
   border-color: #BFBFFF;
   color: #afaffa;
 }
+
 
 .input-box input::placeholder{
   color: #afaffa ;
@@ -151,16 +159,29 @@ section {
 
 .login-box .btn{
   position: relative;
-  height: 40px;
+  height: 50px;
   left: 15%;
   width: 75%;
-  border-radius: 100px;
-  font-size: 16px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 8px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid white ;
+  border-radius: 20px;
+  color: #7f7fe7;
+  font-size: 19px;
+  background-color: white;
+  font-weight: 600;
+}
+.login-box .btn:hover{
+  background-color: #7f7fe7;
+  border-color: #7f7fe7;
+  color: white;
+  font-weight: 600;
 }
 
 .login-box .register-link{
   text-align: center;
+  font-size: 20px;
   background: linear-gradient(
     to right,#BFBFFF,#5353e0, #117df0
      );
@@ -173,21 +194,21 @@ section {
 
 /* registerpage css*/
 .register-box{
-  width: 400px;
-  height: 650px;
-  /* text-align: center; */
+  width: 500px;
+  height: 700px;
   background: linear-gradient(to top,rgba(0,0,0,0.8)10%,rgba(0,0,0,0.8)10%);
   backdrop-filter: blur(5px);
   position: absolute;
-  top: 135px;
-  left: 540px;
-  transform: translate(0%,-5%);
+  top: 200px;
+  left: 650px;
+  /* transform: translate(0%,-5%); */
   border-radius: 25px;
   border-color: #BFBFFF;
-  padding: 0px 40px;
+  padding: 0px 45px 5px 45px;
 }
 
 .register-box h1{
+  margin-top: 70px;
   font-size: 36px;
   font-family: sans-serif ;
   justify-content: center;
@@ -208,16 +229,32 @@ section {
 
 .register-box .btn{
   position: relative;
-  height: 40px;
+  height: 50px;
   left: 15%;
   width: 75%;
-  border-radius: 100px;
-  font-size: 16px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 8px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid white ;
+  border-radius: 20px;
+  color: #7f7fe7;
+  font-size: 19px;
+  background-color: white;
+  font-weight: 600;
+
 }
+
+.register-box .btn:hover{
+  background-color: #7f7fe7;
+  border-color: #7f7fe7;
+  color: white;
+  font-weight: 600;
+}
+
 
 .register-box .login-link{
   text-align: center;
+  font-size: 20px;
   background: linear-gradient(
     to right,#BFBFFF,#5353e0, #117df0
      );
@@ -624,6 +661,56 @@ h1{
   flex-direction: column;
   align-items: center;
 }
+********************
+.billing{
+  text-align: center;
+  margin-left: 1rem;
+  font-size: 35px;
+  color: #333391;
+  
+}
 
+.billing .form {
+  width: 33%;
+  height: 50px;
+  margin: 20px 550px ;
+  }
 
+.form input{
+  width: 100%;
+  height: 100%;
+  border: 2px solid ;
+  border-radius: 40px;
+  font-size: 20px;
+  border-color: #5d5db3;
+  color: #5f5fd0;
+  padding: 2px 0px 2px 20px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; 
+}
+
+.form input::placeholder{
+  font-size: 20px;
+  color: #5f5fd0 ;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; 
+}
+ 
+.btn {
+  border-radius: 100px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  border: 2px solid #7f7fe7 ;
+  color: #7f7fe7;
+  cursor: pointer;
+  background-color: white;
+}
+
+.btn:hover{
+  background-color: #7f7fe7;
+  color: white;
+  font-weight: 600;
+}
   
